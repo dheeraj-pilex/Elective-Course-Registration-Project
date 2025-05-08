@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - Mahindra University</title>
+    <!-- Link to the SAME dashboard CSS file -->
+    <link rel="stylesheet" href="dashboard_style.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="logo-area">
+                <img src="path/to/mahindra-university-logo.png" alt="Mahindra University Logo" id="dashboard-logo">
+                <span>Elective Registration - Faculty</span>
+            </div>
+            <div class="user-area">
+                <span id="user-greeting">Welcome, Faculty Member!</span>
+                <button id="logout-button" class="button-secondary">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+
+            <section id="assigned-courses-section" class="dashboard-section">
+                <h2>My Assigned Courses & Projects</h2>
+                <div id="assigned-courses-list" class="assigned-courses-container">
+                    <!-- Assigned courses/projects will be loaded here -->
+                    <p class="loading-message">Loading assigned courses...</p>
+                </div>
+            </section>
+
+            <section id="pending-approvals-section" class="dashboard-section">
+                <h2>Pending Project Enrollment Approvals</h2>
+                <div id="pending-approvals-list" class="pending-approvals-container">
+                    <!-- Pending approvals will be loaded here -->
+                    <p class="loading-message">Loading pending approvals...</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="dashboard-footer">
+         <div class="container">
+            <p>© 2025 Mahindra University. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load the API service first -->
+    <script src="scripts/api.js"></script>
+    
+    <!-- Load dashboard script -->
+    <script src="scripts/faculty_dashboard.js"></script>
+</body>
+</html>

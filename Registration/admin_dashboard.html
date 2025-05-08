@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Mahindra University</title>
+    <!-- Link to the SAME dashboard CSS file -->
+    <link rel="stylesheet" href="dashboard_style.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container header-content">
+            <div class="logo-area">
+                <!-- Make sure this path is correct -->
+                <img src="path/to/mahindra-university-logo.png" alt="Mahindra University Logo" id="dashboard-logo">
+                <span>Elective Registration - Admin</span>
+            </div>
+            <div class="user-area">
+                <span id="user-greeting">Welcome, Administrator!</span>
+                <button id="logout-button" class="button-secondary">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+
+            <section id="course-management-section" class="dashboard-section">
+                <h2>Course/Project Management</h2>
+
+                <button id="add-new-button" class="button-primary" style="margin-bottom: 15px;">Add New Course/Project</button>
+
+                <!-- Add/Edit Form (Initially Hidden) -->
+                <div id="add-edit-form-container" style="display: none; background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
+                    <h3 id="form-title">Add New Course/Project</h3>
+                    <form id="add-edit-form">
+                        <input type="hidden" id="edit-course-id" value=""> <!-- To track if editing -->
+
+                        <div class="form-group">
+                            <label for="course-id">Course/Project ID:</label>
+                            <input type="text" id="course-id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course-title">Title:</label>
+                            <input type="text" id="course-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course-desc">Description:</label>
+                            <textarea id="course-desc" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="course-prereqs">Prerequisites:</label>
+                            <input type="text" id="course-prereqs">
+                        </div>
+                        <div class="form-group">
+                            <label for="course-seats">Total Seats:</label>
+                            <input type="number" id="course-seats" required min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="course-type">Type:</label>
+                            <select id="course-type">
+                                <option value="course">Course</option>
+                                <option value="project">Project</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="course-dept">Department:</label>
+                            <select id="course-dept">
+                                <option value="CS">Computer Science</option>
+                                <option value="EE">Electrical Engineering</option>
+                                <option value="ME">Mechanical Engineering</option>
+                                <option value="MATH">Mathematics</option>
+                                <option value="MGMT">Management</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="course-faculty">Faculty:</label>
+                            <select id="course-faculty">
+                                <option value="">Select Faculty Member</option>
+                                <!-- Faculty options will be loaded dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="course-approval">Requires Approval:</label>
+                            <select id="course-approval">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions" style="margin-top: 15px;">
+                            <button type="submit" class="button-primary">Save</button>
+                            <button type="button" id="cancel-button" class="button-secondary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Course/Project Table -->
+                <div class="table-container" style="overflow-x: auto;">
+                     <table id="courses-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Seats</th>
+                                <th>Department</th>
+                                <th>Faculty</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courses-table-body">
+                            <!-- Course rows loaded here by JS -->
+                            <tr><td colspan="7" class="loading-message">Loading courses...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- User Management Section -->
+            <section id="user-management-section" class="dashboard-section">
+                <h2>User Management</h2>
+                
+                <button id="add-new-user-button" class="button-primary" style="margin-bottom: 15px;">Add New User</button>
+                
+                <!-- User Table -->
+                <div class="table-container" style="overflow-x: auto;">
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- User rows loaded here by JS -->
+                            <tr><td colspan="6" class="loading-message">Loading users...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Registration Reports Section -->
+            <section id="reports-section" class="dashboard-section">
+                <h2>Registration Analytics</h2>
+                <p>Coming soon: Charts and statistics about course registrations and enrollments.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="dashboard-footer">
+         <div class="container">
+            <p>© 2025 Mahindra University. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load the API service first -->
+    <script src="scripts/api.js"></script>
+    
+    <!-- Load dashboard script -->
+    <script src="scripts/admin_dashboard.js"></script>
+</body>
+</html>

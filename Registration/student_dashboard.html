@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Mahindra University</title>
+    <link rel="stylesheet" href="dashboard_style.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <!-- Header content remains the same -->
+        <div class="container header-content">
+            <div class="logo-area">
+                <img src="path/to/mahindra-university-logo.png" alt="Mahindra University Logo" id="dashboard-logo">
+                <span>Elective Registration</span>
+            </div>
+            <div class="user-area">
+                <span id="user-greeting">Welcome, Student!</span>
+                <button id="logout-button" class="button-secondary">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="container">
+
+            <!-- *** NEW: My Registered Courses Section *** -->
+            <section id="my-courses-section" class="dashboard-section">
+                <h2>My Registered Courses</h2>
+                <div id="my-courses-list" class="my-courses-container">
+                    <!-- Registered courses will be loaded here -->
+                    <p class="loading-message">Loading your registrations...</p>
+                </div>
+            </section>
+
+            <!-- Waitlist Section -->
+            <section id="my-waitlist-section" class="dashboard-section">
+                <h2>My Waitlist</h2>
+                <div id="my-waitlist-list" class="my-waitlist-container">
+                    <!-- Waitlist entries will be loaded here -->
+                    <p class="loading-message">Loading waitlist entries...</p>
+                </div>
+            </section>
+
+            <!-- Existing Available Courses Section -->
+            <section id="available-courses-section" class="dashboard-section">
+                <h2>Available Electives & Projects</h2>
+                <p>Browse the catalog below and register based on eligibility.</p>
+
+                <div class="filter-search-area">
+                    <div class="filter-group">
+                        <label for="type-filter">Type:</label>
+                        <select id="type-filter">
+                            <option value="">All Types</option>
+                            <option value="course">Courses Only</option>
+                            <option value="project">Projects Only</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="department-filter">Department:</label>
+                        <select id="department-filter">
+                            <option value="">All Departments</option>
+                            <option value="CS">Computer Science</option>
+                            <option value="EE">Electrical Engineering</option>
+                            <option value="ME">Mechanical Engineering</option>
+                            <option value="MATH">Mathematics</option>
+                            <option value="MGMT">Management</option>
+                        </select>
+                    </div>
+                    <button id="apply-filters" class="button-primary">Apply Filters</button>
+                </div>
+
+                <div id="course-catalog" class="catalog-container">
+                    <!-- Course listings will be loaded here -->
+                    <p class="loading-message">Loading courses...</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="dashboard-footer">
+         <!-- Footer content remains the same -->
+         <div class="container">
+            <p>© 2025 Mahindra University. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load the API service first -->
+    <script src="scripts/api.js"></script>
+    
+    <!-- Load dashboard script -->
+    <script src="scripts/student_dashboard.js"></script>
+</body>
+</html>

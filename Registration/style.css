@@ -1,0 +1,280 @@
+/* Basic Reset & Defaults */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif; /* Using Roboto from Google Fonts */
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Login Container - Flexbox for Split Screen */
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f4f7f6; /* Light background for contrast */
+}
+
+/* Branding Side Styling */
+.branding-side {
+    flex-basis: 50%; /* Takes up half the screen */
+    background-color: #AA0000; /* !!! REPLACE with Mahindra Uni Primary Color !!! */
+    /* Optional: Add a background image */
+    /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('path/to/campus-image.jpg'); */
+    /* background-size: cover; */
+    /* background-position: center; */
+
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+#logo {
+    max-width: 150px; /* Adjust as needed */
+    margin-bottom: 20px;
+}
+
+.branding-side h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.branding-side p {
+    font-size: 1.1rem;
+    max-width: 80%;
+}
+
+/* Form Side Styling */
+.form-side {
+    flex-basis: 50%; /* Takes up the other half */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+form {
+    width: 100%;
+    max-width: 400px; /* Max width of the form itself */
+    background-color: #ffffff;
+    padding: 35px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="email"] /* If you use email type */
+{
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #0055AA; /* !!! REPLACE with Mahindra Uni Secondary/Accent Color !!! */
+    box-shadow: 0 0 0 2px rgba(0, 85, 170, 0.2); /* Optional focus shadow */
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: -10px; /* Pulls it up slightly */
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: #0055AA; /* !!! REPLACE with Mahindra Uni Link/Accent Color !!! */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+    color: #003366; /* Darker shade on hover */
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #AA0000; /* !!! Use SAME Primary Color as branding side !!! */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.login-btn:hover {
+    background-color: #880000; /* Slightly darker shade on hover */
+}
+
+.login-btn:active {
+    transform: scale(0.99); /* Subtle click effect */
+}
+
+.user-type-links { /* Optional styling for other login links */
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.user-type-links a {
+    color: #0055AA; /* Link color */
+    text-decoration: none;
+    margin: 0 5px;
+}
+.user-type-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    .branding-side, .form-side {
+        flex-basis: auto; /* Reset flex-basis */
+        min-height: 30vh; /* Give branding some height */
+    }
+
+    .form-side {
+        min-height: 70vh; /* Give form more space */
+        justify-content: flex-start; /* Align form to top */
+        padding-top: 30px;
+    }
+
+    form {
+        max-width: 90%; /* Allow form to be wider on smaller screens */
+         box-shadow: none; /* Optional: remove shadow on mobile */
+    }
+
+    .branding-side h1 {
+        font-size: 1.5rem;
+    }
+     .branding-side p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+     #logo {
+        max-width: 100px;
+    }
+    form {
+        padding: 25px 20px;
+    }
+    form h2 {
+        font-size: 1.6rem;
+    }
+     .login-btn,
+     .input-group input {
+         font-size: 0.95rem;
+     }
+}
+
+/* Add this rule to your existing style.css */
+
+.error-text {
+    color: #D8000C; /* Red color for errors */
+    background-color: #FFD2D2; /* Light red background */
+    border: 1px solid #D8000C;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px; /* Space below the error */
+    font-size: 0.9rem;
+    text-align: center;
+    display: none; /* Hide initially */
+}
+
+/* ... (keep all your other existing styles) ... */
+/* === ADD these styles to style.css === */
+
+/* Role Selection Styling */
+.role-selection {
+    border: none; /* Remove default fieldset border */
+    padding: 0;
+    margin-bottom: 20px; /* Space below role selection */
+    margin-top: 5px; /* Space above role selection */
+}
+
+.role-selection legend {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px; /* Space below legend */
+    font-size: 0.9rem;
+    padding: 0;
+}
+
+.role-selection div {
+    display: inline-block; /* Display roles side-by-side */
+    margin-right: 20px; /* Space between role options */
+    margin-bottom: 5px; /* Allow wrapping */
+}
+.role-selection div:last-child {
+    margin-right: 0;
+}
+
+.role-selection input[type="radio"] {
+    margin-right: 5px; /* Space between radio button and label */
+    vertical-align: middle; /* Align radio button with label text */
+}
+
+.role-selection label {
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer; /* Indicate label is clickable */
+     vertical-align: middle;
+}
+
+
+/* Ensure error text style is present */
+.error-text {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    border: 1px solid #D8000C;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    /* display: none; is handled by JS */
+}
+/* === End of new/modified styles === */
+
+/* --- Ensure other existing styles (.login-container, etc.) remain --- */

@@ -1,0 +1,284 @@
+/* === Add these styles to dashboard_style.css === */
+
+/* General Section Spacing */
+.dashboard-section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Optional separator */
+}
+.dashboard-section:last-child {
+    border-bottom: none;
+}
+
+.dashboard-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.6rem; /* Slightly smaller for section titles */
+    color: #444;
+}
+
+/* My Registered Courses Section */
+#my-courses-section {
+    background-color: #f0f4f8; /* Slightly different background */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.my-courses-container {
+    /* Using flexbox for layout, but could also be a grid */
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 15px;
+}
+
+.my-courses-container p { /* Style for the empty message */
+    width: 100%;
+    font-style: italic;
+    color: #666;
+}
+
+.registered-course-item {
+    background-color: #ffffff;
+    border: 1px solid #d0d8e0;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between; /* Push button to the right */
+    align-items: center;
+    flex-basis: calc(50% - 10px); /* Aim for 2 columns, adjust as needed */
+    flex-grow: 1; /* Allow items to grow */
+}
+
+.registered-course-item span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Button Styling Variations */
+.button-register {
+    /* Uses .button-primary styles by default */
+}
+
+.button-drop {
+    background-color: #e74c3c; /* Red for drop */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+.button-drop:hover {
+    background-color: #c0392b; /* Darker red */
+}
+
+.button-waitlist {
+    background-color: #f39c12; /* Orange for waitlist */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+.button-waitlist:hover {
+    background-color: #e67e22; /* Darker orange */
+}
+
+.button-full,
+button[disabled] { /* Style for disabled/full state */
+    background-color: #bdc3c7; /* Grey */
+    color: #7f8c8d;
+    cursor: not-allowed;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+/* Ensure hover doesn't change disabled look */
+button[disabled]:hover {
+   background-color: #bdc3c7;
+}
+
+/* Responsive adjustments for My Courses */
+@media (max-width: 768px) {
+    .registered-course-item {
+        flex-basis: 100%; /* Stack items in one column */
+    }
+}
+
+/* === End of new styles === */
+
+
+/* === Make sure your existing styles for .course-card etc. are still present === */
+/* ... (keep existing styles for .catalog-container, .course-card, header, footer etc.) ... */
+/* === ADD these styles to your EXISTING dashboard_style.css === */
+
+/* General Form Group Styling (for Admin form) */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+.form-group textarea {
+    resize: vertical; /* Allow vertical resize */
+}
+.form-group input[readonly] {
+    background-color: #e9ecef; /* Indicate read-only fields */
+    cursor: not-allowed;
+}
+
+
+/* Admin Table Styling */
+.table-container {
+    margin-top: 20px;
+}
+#courses-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+#courses-table th,
+#courses-table td {
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+#courses-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+}
+#courses-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+#courses-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action Buttons within Table/Lists */
+.action-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    color: white;
+}
+.button-edit {
+    background-color: #3498db; /* Blue */
+}
+.button-edit:hover {
+    background-color: #2980b9;
+}
+.button-delete {
+    background-color: #e74c3c; /* Red */
+}
+.button-delete:hover {
+    background-color: #c0392b;
+}
+
+
+/* Faculty Approval Item Styling */
+.pending-approvals-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.approval-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+.approval-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 15px; /* Space before buttons */
+    flex-grow: 1;
+}
+.approval-details span {
+    font-size: 0.95rem;
+}
+.approval-actions button {
+     margin-left: 8px; /* Space between buttons */
+}
+.button-approve {
+    background-color: #2ecc71; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+.button-approve:hover {
+    background-color: #27ae60;
+}
+.button-disapprove {
+     background-color: #e74c3c; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+.button-disapprove:hover {
+     background-color: #c0392b;
+}
+
+/* Simple List Styling (Optional for Assigned Courses) */
+.simple-list {
+    list-style: disc;
+    margin-left: 20px;
+}
+.simple-list li {
+    margin-bottom: 8px;
+}
+
+
+/* Waitlist Button Refinement (if not already done) */
+.button-on-waitlist { /* New class for button when on waitlist */
+    background-color: #95a5a6; /* Grey-blue */
+    color: white;
+    cursor: pointer; /* Or 'not-allowed' if they can't leave? */
+     border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+.button-on-waitlist:hover {
+     background-color: #7f8c8d;
+}
+
+
+/* === End of new/modified styles === */
+
+/* --- Ensure other existing styles (.dashboard-header, .course-card, etc.) remain --- */

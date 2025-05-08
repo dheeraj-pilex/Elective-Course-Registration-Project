@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mahindra University Elective Registration</title>
+    <!-- Make sure style.css is in the same folder -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Branding Side -->
+        <div class="branding-side">
+            <!-- IMPORTANT: Update this path to your actual logo file location -->
+            <img src="path/to/mahindra-university-logo.png" alt="Mahindra University Logo" id="logo">
+            <h1>Elective Course/Project Registration System</h1>
+            <p>Streamlining your academic choices.</p>
+        </div>
+
+        <!-- Form Side -->
+        <div class="form-side">
+            <!-- The form for login -->
+            <form id="login-form">
+                <h2>Sign In</h2>
+
+                <!-- Role Selection Section -->
+                <fieldset class="role-selection">
+                    <legend>Login As:</legend>
+                    <!-- Student Radio Button -->
+                    <div>
+                        <input type="radio" id="role-student" name="role" value="student" checked required>
+                        <label for="role-student">Student</label>
+                    </div>
+                    <!-- Faculty Radio Button -->
+                    <div>
+                        <input type="radio" id="role-faculty" name="role" value="faculty" required>
+                        <label for="role-faculty">Faculty</label>
+                    </div>
+                    <!-- Admin Radio Button -->
+                    <div>
+                        <input type="radio" id="role-admin" name="role" value="admin" required>
+                        <label for="role-admin">Admin</label>
+                    </div>
+                </fieldset>
+                <!-- End Role Selection Section -->
+
+                <!-- Username Input -->
+                <div class="input-group">
+                    <label for="username">Username / Email</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your Username or Email" required>
+                </div>
+
+                <!-- Password Input -->
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <!-- Error Message Area (hidden initially) -->
+                <p id="error-message" class="error-text" style="display: none;"></p>
+
+                <!-- Forgot Password Link -->
+                <a href="#" class="forgot-password">Forgot Password?</a>
+
+                <!-- Login Button -->
+                <button type="submit" class="login-btn">Login</button>
+
+            </form>
+        </div> <!-- End Form Side -->
+    </div> <!-- End Login Container -->
+
+    <!-- Load the API service first -->
+    <script src="scripts/api.js"></script>
+    
+    <!-- JavaScript for Login -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to form elements
+            const loginForm = document.getElementById('login-form');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const errorMessageElement = document.getElementById('error-message');
+
+            // Check if already logged in, redirect if so
+            if (API.AuthService.isAuthenticated()) {
+                const user = API.AuthService.getCurrentUser();
+                if (user) {
+                    // Redirect based on role
+                    switch (user.role) {
+                        case 'student': window.location.href = 'student_dashboard.html'; break;
+                        case 'faculty': window.location.href = 'faculty_dashboard.html'; break;
+                        case 'admin':   window.location.href = 'admin_dashboard.html';   break;
+                    }
+                }
+            }
+
+            // Add event listener for form submission
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (event) => {
+                    event.preventDefault(); // Stop page reload
+
+                    // Get entered values
+                    const enteredUsername = usernameInput.value.trim();
+                    const enteredPassword = passwordInput.value;
+                    const selectedRoleInput = document.querySelector('input[name="role"]:checked');
+                    const selectedRole = selectedRoleInput ? selectedRoleInput.value : null;
+
+                    // Clear previous error messages
+                    errorMessageElement.textContent = '';
+                    errorMessageElement.style.display = 'none';
+
+                    // Validate role selection
+                    if (!selectedRole) {
+                         errorMessageElement.textContent = 'Please select your role.';
+                         errorMessageElement.style.display = 'block';
+                         return;
+                    }
+
+                    try {
+                        // Call the API to login
+                        const response = await API.AuthService.login(
+                            enteredUsername, 
+                            enteredPassword, 
+                            selectedRole
+                        );
+
+                        console.log('Login successful!', response);
+                        
+                        // Redirect based on role
+                        switch (selectedRole) {
+                            case 'student': window.location.href = 'student_dashboard.html'; break;
+                            case 'faculty': window.location.href = 'faculty_dashboard.html'; break;
+                            case 'admin':   window.location.href = 'admin_dashboard.html';   break;
+                        }
+                    } catch (error) {
+                        console.error('Login error:', error.message);
+                        
+                        // Show error message
+                        errorMessageElement.textContent = error.message || 'Invalid username or password.';
+                        errorMessageElement.style.display = 'block';
+                        passwordInput.value = ''; // Clear password field
+                        usernameInput.focus();
+                    }
+                }); // End submit listener
+            } // End if(loginForm)
+        }); // End DOMContentLoaded listener
+    </script>
+
+</body>
+</html>
