@@ -1,37 +1,89 @@
-# Elective-Course-Registration-Project
-Overview
-The Elective Course Registration System is a web-based application built using the MERN stack (MongoDB, Express, React, Node.js). This system provides a seamless and efficient way for students to register for elective courses and for administrators to manage course offerings, student registrations, and user data. The application allows real-time updates, ensuring smooth course registration and management.
+# Elective Course Registration System
 
-Features
-Student Registration: Students can view available courses and register for electives with ease.
+A web application for students to register for elective courses, faculty to manage their courses, and administrators to oversee the entire system.
 
-Real-Time Updates: Course availability is updated in real-time, preventing overcrowded courses and ensuring fair access.
+## Features
 
-Course Management: Administrators can add, update, and remove courses as required.
+- User authentication (students, faculty, admin)
+- Course listing and registration
+- Registration status tracking
+- Dashboard views for different user roles
+- Bulk registration with "Apply All" feature
 
-Student Management: Admins can track student registrations, monitor attendance, and manage user data.
+## Project Structure
 
-Real-Time Monitoring: Admins can monitor course registration statistics in real-time to ensure fair distribution of courses.
+- **Frontend**: React application using Vite
+- **Backend**: Node.js with Express and MongoDB
 
-Notifications: Students receive notifications for important updates, such as course registration deadlines and seat availability.
+## Prerequisites
 
-Authentication: Secure login for both students and administrators using JSON Web Tokens (JWT).
+- Node.js (v14+)
+- MongoDB
 
-Tech Stack
-Frontend:
+## Getting Started
 
-React.js: A JavaScript library for building user interfaces, providing a smooth and dynamic user experience through Single Page Applications (SPAs).
+### Backend Setup
 
-React Hooks: useState and useEffect are used to manage state and handle side-effects like fetching data.
+1. Navigate to the backend directory:
+   ```
+   cd backend
+   ```
 
-Backend:
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-Node.js: A JavaScript runtime built on Chrome's V8 JavaScript engine, ideal for building real-time applications.
+3. Set up environment variables:
+   - Create a `.env` file in the backend directory based on `.env.example`
+   - Update the MongoDB connection string and other variables
 
-Express.js: A web framework for Node.js, used to simplify the process of creating APIs and handling requests.
+4. Start the backend server:
+   ```
+   npm run dev
+   ```
+   The server will run on http://localhost:5000
 
-Database:
+### Frontend Setup
 
-MongoDB: A NoSQL database that stores data in flexible, JSON-like documents, ideal for this application's scalability.
+1. Navigate to the frontend directory:
+   ```
+   cd frontend
+   ```
 
-Mongoose: An ODM (Object Data Modeling) library for MongoDB, providing schema-based data models for consistency and validation.
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Start the frontend development server:
+   ```
+   npm run dev
+   ```
+   The application will be available at http://localhost:3000
+
+## API Endpoints
+
+- Authentication: `/api/auth`
+- Users: `/api/users`
+- Courses: `/api/courses`
+- Registrations: `/api/registrations`
+
+## Troubleshooting
+
+If you encounter MongoDB connection issues:
+1. Check that your MongoDB connection string is correct in the `.env` file
+2. Ensure your MongoDB service is running
+3. Verify network connectivity to the MongoDB server
+
+## License
+Student:
+Email: student@example.com
+Password: password123
+Faculty:
+Email: faculty@example.com
+Password: password123
+Admin:
+Email: admin@example.com
+Password: password123
+MIT 
